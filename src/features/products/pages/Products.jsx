@@ -7,6 +7,7 @@ import SectionHeader from "../../../components/SectionHeader/SectionHeader";
 import useProducts from "../hooks/useProducts";
 import useCategories from "../hooks/useCategories";
 
+import ProductSort from "../components/ProductSort/ProductSort";
 import ProductGrid from "../components/ProductGrid";
 import ProductFilters from "../components/ProductFilters/ProductFilters";
 import styles from './Products.module.css';
@@ -21,7 +22,8 @@ function Products() {
   } = useProducts();
 
   const [searchTerm, setSearchTerm] = useState("");
-
+  
+  const [sortOption, setSortOption] = useState("");
   const {
     categories
   } = useCategories();
@@ -56,7 +58,7 @@ function Products() {
   }
 
 
-const filteredProducts = products.filter((product)=>{
+let filteredProducts = products.filter((product)=>{
 
 
   const matchesCategory =
@@ -82,15 +84,67 @@ const filteredProducts = products.filter((product)=>{
 
 });
 
+   
+switch(sortOption){
+
+  case "price-asc":
+
+    filteredProducts.sort(
+      (a,b)=>a.price-b.price
+    );
+
+    break;
+
+
+  case "price-desc":
+
+    filteredProducts.sort(
+      (a,b)=>b.price-a.price
+    );
+
+    break;
+
+
+  case "rating":
+
+    filteredProducts.sort(
+      (a,b)=>b.rating-a.rating
+    );
+
+    break;
+
+
+  case "discount":
+
+    filteredProducts.sort(
+      (a,b)=>
+        b.discountPercentage -
+        a.discountPercentage
+    );
+
+    break;
+
+
+  default:
+    break;
+
+}
 
   return (
 
     <Section>
 
       <SectionHeader
-        title="Products"
-        subtitle="Explore our collection"
-      />
+  title="Products"
+  subtitle="Explore our collection"
+/>
+
+
+<ProductSort
+  sortOption={sortOption}
+  onSortChange={setSortOption}
+/>
+
 
       <div className={styles.mainContainer}>
 
