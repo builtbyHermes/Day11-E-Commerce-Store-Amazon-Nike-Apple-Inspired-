@@ -1,11 +1,12 @@
-import ProductCard from "../../../components/ProductCard";
+import ProductCard from "../../../components/ProductCard/ProductCard";
+import styles from './ProductGrid.module.css';
 
 
 function ProductGrid({ products }) {
 
   return (
 
-    <div className="product-grid">
+    <div className={styles.grid}>
 
       {
         products.map((product)=>(

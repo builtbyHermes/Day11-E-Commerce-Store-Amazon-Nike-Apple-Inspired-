@@ -1,0 +1,46 @@
+.card {
+	border: 1px solid #eee;
+	border-radius: 12px;
+	padding: 1.25rem;
+	background: #fff;
+  width: auto;
+  max-width: 280px;
+  box-sizing: border-box;
+}
+
+.link {
+	color: inherit;
+	text-decoration: none;
+}
+
+.image {
+	width: 100%;
+	height: 160px;
+	object-fit: cover;
+	border-radius: 4px;
+}
+
+.title {
+	margin: 0.5rem 0 0;
+	font-size: 1rem;
+}
+
+.brand {
+	color: #666;
+	font-size: 0.875rem;
+}
+
+.price {
+	font-weight: 600;
+	margin-top: 0.25rem;
+}
+
+.rating {
+	color: #ff9900;
+	margin-top: 0.25rem;
+}
+
+.card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}

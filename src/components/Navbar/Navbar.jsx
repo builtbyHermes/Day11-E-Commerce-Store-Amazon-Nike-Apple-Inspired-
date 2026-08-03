@@ -1,29 +1,30 @@
 import { Link } from "react-router-dom";
+import styles from './Navbar.module.css';
 
 function Navbar() {
   return (
-    <header>
-      <nav>
-        <h2>ShopSphere</h2>
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <h2 className={styles.brand}>ShopSphere</h2>
 
-        <ul>
-          <li>
+        <ul className={styles.menu}>
+          <li className={styles.item}>
             <Link to="/">Home</Link>
           </li>
 
-          <li>
+          <li className={styles.item}>
             <Link to="/products">Products</Link>
           </li>
 
-          <li>
+          <li className={styles.item}>
             <Link to="/wishlist">Wishlist</Link>
           </li>
 
-          <li>
+          <li className={styles.item}>
             <Link to="/cart">Cart</Link>
           </li>
 
-          <li>
+          <li className={styles.item}>
             <Link to="/profile">Profile</Link>
           </li>
         </ul>

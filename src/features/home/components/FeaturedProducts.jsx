@@ -1,5 +1,5 @@
-import Section from "../../../components/Section";
-import SectionHeader from "../../../components/SectionHeader";
+import Section from "../../../components/Section/Section";
+import SectionHeader from "../../../components/SectionHeader/SectionHeader";
 
 import useProducts from "../../products/hooks/useProducts";
 

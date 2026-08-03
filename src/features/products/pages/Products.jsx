@@ -1,9 +1,18 @@
-import {useProducts} from "../hooks/useProducts";
+import { useState } from "react";
+
+import SearchProducts from "../components/SearchProducts/SearchProducts";
+import Section from "../../../components/Section/Section";
+import SectionHeader from "../../../components/SectionHeader/SectionHeader";
+
+import useProducts from "../hooks/useProducts";
+import useCategories from "../hooks/useCategories";
 
 import ProductGrid from "../components/ProductGrid";
+import ProductFilters from "../components/ProductFilters/ProductFilters";
+import styles from './Products.module.css';
 
 
-function Products(){
+function Products() {
 
   const {
     products,
@@ -11,31 +20,101 @@ function Products(){
     error
   } = useProducts();
 
+  const [searchTerm, setSearchTerm] = useState("");
 
-  if(loading){
-    return <p>Loading products...</p>;
+  const {
+    categories
+  } = useCategories();
+
+
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+
+  if (loading) {
+
+    return (
+      <Section>
+        <p>
+          Loading products...
+        </p>
+      </Section>
+    );
+
   }
 
 
-  if(error){
-    return <p>{error}</p>;
+  if (error) {
+
+    return (
+      <Section>
+        <p>
+          {error}
+        </p>
+      </Section>
+    );
+
   }
+
+
+const filteredProducts = products.filter((product)=>{
+
+
+  const matchesCategory =
+    selectedCategory
+      ?
+      product.category === selectedCategory
+      :
+      true;
+
+
+  const matchesSearch =
+    product.title
+      .toLowerCase()
+      .includes(
+        searchTerm.toLowerCase()
+      );
+
+
+  return (
+    matchesCategory &&
+    matchesSearch
+  );
+
+});
 
 
   return (
 
-    <section>
+    <Section>
 
-      <h1>
-        Products
-      </h1>
-
-
-      <ProductGrid
-        products={products}
+      <SectionHeader
+        title="Products"
+        subtitle="Explore our collection"
       />
 
-    </section>
+      <div className={styles.mainContainer}>
+
+        <div className={styles.sidebarWrapper}>
+          <SearchProducts
+            searchTerm={searchTerm}
+            onSearchChange={setSearchTerm}
+          />
+
+          <ProductFilters
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+          />
+        </div>
+
+        <ProductGrid
+          products={filteredProducts}
+        />
+
+      </div>
+
+
+    </Section>
 
   );
 

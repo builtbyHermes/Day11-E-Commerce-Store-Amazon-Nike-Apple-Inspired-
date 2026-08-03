@@ -1,38 +1,40 @@
 import { Link } from "react-router-dom";
+import styles from './ProductCard.module.css';
 
 
 function ProductCard({ product }) {
 
   return (
 
-    <article>
+    <article className={styles.card}>
 
-      <Link to={`/products/${product.id}`}>
+      <Link to={`/products/${product.id}`} className={styles.link}>
 
         <img
+          className={styles.image}
           src={product.thumbnail}
           alt={product.title}
         />
 
 
-        <h3>
+        <h3 className={styles.title}>
           {product.title}
         </h3>
 
       </Link>
 
 
-      <p>
+      <p className={styles.brand}>
         {product.brand}
       </p>
 
 
-      <p>
+      <p className={styles.price}>
         ${product.price}
       </p>
 
 
-      <p>
+      <p className={styles.rating}>
         ⭐ {product.rating}
       </p>
 
