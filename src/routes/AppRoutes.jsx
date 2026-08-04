@@ -11,7 +11,7 @@ const Products = lazy(() =>
 );
 
 const ProductDetails = lazy(() =>
-  import("../features/products/pages/ProductDetails")
+  import("../features/products/pages/ProductDetails/ProductDetails")
 );
 
 const Cart = lazy(() =>

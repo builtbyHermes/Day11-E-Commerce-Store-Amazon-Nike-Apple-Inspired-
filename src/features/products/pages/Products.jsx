@@ -132,43 +132,42 @@ switch(sortOption){
 
   return (
 
-    <Section>
+                <Section>
 
-      <SectionHeader
-  title="Products"
-  subtitle="Explore our collection"
-/>
+            <SectionHeader
+                title="Products"
+                subtitle="Explore our collection"
+            />
 
+            <ProductSort
+                sortOption={sortOption}
+                onSortChange={setSortOption}
+            />
 
-<ProductSort
-  sortOption={sortOption}
-  onSortChange={setSortOption}
-/>
+            <div className={styles.mainContainer}>
 
+                <aside className={styles.sidebarWrapper}>
 
-      <div className={styles.mainContainer}>
+                <SearchProducts
+                    searchTerm={searchTerm}
+                    onSearchChange={setSearchTerm}
+                />
 
-        <div className={styles.sidebarWrapper}>
-          <SearchProducts
-            searchTerm={searchTerm}
-            onSearchChange={setSearchTerm}
-          />
+                <ProductFilters
+                    categories={categories}
+                    selectedCategory={selectedCategory}
+                    onCategoryChange={setSelectedCategory}
+                />
 
-          <ProductFilters
-            categories={categories}
-            selectedCategory={selectedCategory}
-            onCategoryChange={setSelectedCategory}
-          />
-        </div>
+                </aside>
 
-        <ProductGrid
-          products={filteredProducts}
-        />
+                <ProductGrid
+                products={filteredProducts}
+                />
 
-      </div>
+            </div>
 
-
-    </Section>
+            </Section>
 
   );
 

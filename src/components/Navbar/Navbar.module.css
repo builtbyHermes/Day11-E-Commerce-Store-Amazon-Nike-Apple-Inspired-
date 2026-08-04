@@ -1,10 +1,17 @@
 .header {
-	background: #fff;
-	border-bottom: 1px solid #eee;
+		position: sticky;
+		top: 0;
+		z-index: 9999;
+		background-color: rgba(255,255,255,0.85);
+		backdrop-filter: blur(12px);
+		border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
 .nav {
-	display: flex;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.5rem 0;
 	align-items: center;
 	justify-content: space-between;
 	padding: 0.75rem 0;
@@ -24,6 +31,29 @@
 }
 
 .item a {
-	color: inherit;
+	color: var(--grey-dark);
 	text-decoration: none;
+}
+
+.cartLink {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	position: relative;
+}
+
+.badge {
+	background: var(--primary-blue);
+	color: #fff;
+	min-width: 18px;
+	height: 18px;
+	font-size: 12px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 999px;
+	padding: 0 5px;
+	position: absolute;
+	top: -8px;
+	right: -10px;
 }

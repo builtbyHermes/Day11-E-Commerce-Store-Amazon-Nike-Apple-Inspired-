@@ -5,6 +5,8 @@
   gap: 0.75rem;
   align-items: flex-start;
   padding: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
   height: auto;
 
   background: #ffffff;
