@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import styles from './Navbar.module.css';
 import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
+import SearchBar from "./SearchBar/SearchBar";
+
 function Navbar() {
 
     const {
@@ -49,7 +51,10 @@ function Navbar() {
               )}
             </Link>
           </li>
-
+          
+           
+           <SearchBar />
+           
           <li className={styles.item}>
             <Link to="/profile">Profile</Link>
           </li>

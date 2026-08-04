@@ -97,6 +97,11 @@ function AppRoutes() {
             />
           </Route>
 
+          <Route
+            path="/search"
+            element={<SearchResults />}
+            />
+
         </Routes>
 
       </Suspense>
