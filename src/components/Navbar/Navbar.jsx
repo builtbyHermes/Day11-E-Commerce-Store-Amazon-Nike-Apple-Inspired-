@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import styles from './Navbar.module.css';
 import { useCart } from "../../context/CartContext";
-
+import { useWishlist } from "../../context/WishlistContext";
 function Navbar() {
 
     const {
   cartCount
 } = useCart();
+
+ const {
+  wishlistCount
+} = useWishlist();
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
@@ -21,9 +25,16 @@ function Navbar() {
             <Link to="/products">Products</Link>
           </li>
 
-          <li className={styles.item}>
-            <Link to="/wishlist">Wishlist</Link>
-          </li>
+          <Link to="/wishlist">
+
+            Wishlist
+
+            {
+                wishlistCount > 0 &&
+                ` (${wishlistCount})`
+            }
+
+            </Link>
 
           <li className={styles.item}>
             <Link to="/cart" className={styles.cartLink}>

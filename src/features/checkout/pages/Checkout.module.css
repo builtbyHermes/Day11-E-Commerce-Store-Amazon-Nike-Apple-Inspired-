@@ -1,0 +1,27 @@
+.checkoutContainer {
+
+  display: grid;
+
+  grid-template-columns: 1fr 380px;
+
+  gap: 80px;
+
+  align-items: start;
+
+  margin-top: 1rem;
+
+}
+
+
+
+@media(max-width:900px){
+
+  .checkoutContainer{
+
+    grid-template-columns:1fr;
+
+    gap:2rem;
+
+  }
+
+}

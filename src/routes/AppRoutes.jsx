@@ -34,7 +34,13 @@ const Checkout = lazy(() =>
   import("../features/checkout/pages/Checkout")
 );
 
+const OrderConfirmation = lazy(() =>
+  import("../features/checkout/pages/OrderConfirmation")
+);
 
+const SearchResults = lazy(() =>
+  import("../features/search/pages/SearchResults")
+);
 function AppRoutes() {
   return (
     <BrowserRouter>
@@ -84,7 +90,11 @@ function AppRoutes() {
               path="/checkout"
               element={<Checkout />}
             />
-
+            
+            <Route
+            path="/order-confirmation"
+            element={<OrderConfirmation />}
+            />
           </Route>
 
         </Routes>

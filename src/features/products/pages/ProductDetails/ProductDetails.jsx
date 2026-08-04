@@ -29,15 +29,23 @@ function ProductDetails() {
     error
   } = useProduct(id);
 
-
   const {
     addToCart
   } = useCart();
 
-
   const [quantity, setQuantity] = useState(1);
 
+  const isWishlisted = wishlistItems.some(
+    item => item.id === product?.id
+  );
 
+  const handleWishlist = () => {
+    if (isWishlisted) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
+  };
 
   if (loading) {
 
@@ -124,20 +132,6 @@ function ProductDetails() {
     );
 
   };
-
-
-const isWishlisted = wishlistItems.some(
-  item => item.id === product?.id
-);
-
-const handleWishlist = () => {
-  if (isWishlisted) {
-    removeFromWishlist(product.id);
-    return;
-  }
-
-  addToWishlist(product);
-};
 
 
 
@@ -248,8 +242,6 @@ const handleWishlist = () => {
               {isWishlisted ? "In Wishlist" : "Wishlist"}
             </button>
 
-
-
           </div>
 
 
@@ -267,3 +259,4 @@ const handleWishlist = () => {
 
 
 export default ProductDetails;
+
