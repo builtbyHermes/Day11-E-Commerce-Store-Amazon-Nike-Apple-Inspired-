@@ -10,6 +10,7 @@ import ProductInfo from "../../components/ProductInfo/ProductInfo";
 import { useCart } from "../../../../context/CartContext";
 import styles from "./ProductDetails.module.css";
 import { useWishlist } from "../../../../context/WishlistContext";
+import RelatedProducts from "../../components/RelatedProducts/RelatedProducts";
 
 function ProductDetails() {
 
@@ -247,6 +248,7 @@ function ProductDetails() {
 
         </div>
 
+      <RelatedProducts category={product.category} currentProductId={product.id} />
 
       </div>
 

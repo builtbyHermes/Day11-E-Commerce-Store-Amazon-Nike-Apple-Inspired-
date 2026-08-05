@@ -1,0 +1,15 @@
+.container {
+
+  margin-top: 4rem;
+  display:flex;
+  flex-direction: column;
+}
+
+
+.title {
+
+  font-size: 1.8rem;
+
+  margin-bottom: 1.5rem;
+
+}

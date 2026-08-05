@@ -5,18 +5,13 @@ import {
   useState
 } from "react";
 
-
 const CartContext = createContext();
 
-
-
 export function CartProvider({ children }) {
-
 
   const [cartItems, setCartItems] = useState(() => {
 
     const savedCart = localStorage.getItem("cart");
-
 
     return savedCart
       ? JSON.parse(savedCart)
@@ -24,9 +19,29 @@ export function CartProvider({ children }) {
 
   });
 
+  /* ---------------- Drawer State ---------------- */
 
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // Save cart whenever it changes
+  const openCart = () => {
+
+    setIsCartOpen(true);
+
+  };
+
+  const closeCart = () => {
+
+    setIsCartOpen(false);
+
+  };
+
+  const toggleCart = () => {
+
+    setIsCartOpen(current => !current);
+
+  };
+
+  /* ---------------- Persist Cart ---------------- */
 
   useEffect(() => {
 
@@ -37,53 +52,32 @@ export function CartProvider({ children }) {
 
   }, [cartItems]);
 
-
-
-
+  /* ---------------- Cart Actions ---------------- */
 
   const addToCart = (product, quantity = 1) => {
 
+    setCartItems(currentItems => {
 
-    setCartItems((currentItems) => {
-
-
-      const existingItem =
-        currentItems.find(
-          item => item.id === product.id
-        );
-
-
+      const existingItem = currentItems.find(
+        item => item.id === product.id
+      );
 
       if (existingItem) {
 
-
         return currentItems.map(item =>
-
 
           item.id === product.id
 
-          ?
+            ? {
+                ...item,
+                quantity: item.quantity + quantity
+              }
 
-          {
-            ...item,
-
-            quantity:
-              item.quantity + quantity
-
-          }
-
-
-          :
-
-          item
-
+            : item
 
         );
 
-
       }
-
-
 
       return [
 
@@ -91,28 +85,21 @@ export function CartProvider({ children }) {
 
         {
           ...product,
-
           quantity
-
         }
 
       ];
 
-
-
     });
 
+    // Automatically open mini cart
+    openCart();
 
   };
 
-
-
-
-
   const removeFromCart = (id) => {
 
-
-    setCartItems((currentItems) =>
+    setCartItems(currentItems =>
 
       currentItems.filter(
         item => item.id !== id
@@ -120,49 +107,36 @@ export function CartProvider({ children }) {
 
     );
 
-
   };
-
-
-
-
 
   const updateQuantity = (id, quantity) => {
 
+    if (quantity <= 0) {
 
-    setCartItems((currentItems) =>
+      removeFromCart(id);
 
+      return;
+
+    }
+
+    setCartItems(currentItems =>
 
       currentItems.map(item =>
 
-
         item.id === id
 
+          ? {
+              ...item,
+              quantity
+            }
 
-        ?
-
-        {
-          ...item,
-
-          quantity
-        }
-
-
-        :
-
-        item
-
+          : item
 
       )
 
     );
 
-
   };
-
-
-
-
 
   const clearCart = () => {
 
@@ -170,9 +144,7 @@ export function CartProvider({ children }) {
 
   };
 
-
-
-
+  /* ---------------- Derived Values ---------------- */
 
   const cartCount = cartItems.reduce(
 
@@ -184,10 +156,6 @@ export function CartProvider({ children }) {
 
   );
 
-
-
-
-
   const cartTotal = cartItems.reduce(
 
     (total, item) =>
@@ -197,10 +165,6 @@ export function CartProvider({ children }) {
     0
 
   );
-
-
-
-
 
   return (
 
@@ -220,7 +184,15 @@ export function CartProvider({ children }) {
 
         cartCount,
 
-        cartTotal
+        cartTotal,
+
+        isCartOpen,
+
+        openCart,
+
+        closeCart,
+
+        toggleCart
 
       }}
 
@@ -234,14 +206,8 @@ export function CartProvider({ children }) {
 
 }
 
-
-
-
-
 export function useCart() {
 
-
   return useContext(CartContext);
-
 
 }

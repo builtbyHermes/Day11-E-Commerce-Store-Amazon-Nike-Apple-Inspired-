@@ -1,0 +1,66 @@
+.container {
+
+  position:absolute;
+
+  top:12px;
+
+  left:12px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:8px;
+
+  z-index:2;
+
+}
+
+
+.container span {
+
+  padding:5px 10px;
+
+  border-radius:20px;
+
+  font-size:.75rem;
+
+  font-weight:600;
+
+}
+
+
+.discount {
+
+  background:#dc2626;
+
+  color:white;
+
+}
+
+
+.inStock {
+
+  background:#16a34a;
+
+  color:white;
+
+}
+
+
+.lowStock {
+
+  background:#f59e0b;
+
+  color:white;
+
+}
+
+
+.outOfStock {
+
+  background:#374151;
+
+  color:white;
+
+}
