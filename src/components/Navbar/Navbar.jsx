@@ -50,14 +50,12 @@ function Navbar() {
         </Link>
 
 
-
-
         {/* Main Navigation */}
 
         <div className={styles.navigation}>
 
 
-          <NavLink
+          {/* <NavLink
             to="/"
             end
             className={({isActive}) =>
@@ -67,33 +65,19 @@ function Navbar() {
                 :
                 styles.navLink
             }
-          >
+          > */}
+          
+          <NavLink className={styles.navLink}>
 
             <FiHome />
 
             <span>
               Home
             </span>
-             
-             <h1>HOME</h1>
-          </NavLink>
 
-
-
-
-          <NavLink
-            to="/products"
-            className={({isActive}) =>
-              isActive
-                ?
-                `${styles.navLink} ${styles.active}`
-                :
-                styles.navLink
-            }
-          >
-
-            <FiGrid />
-
+             </NavLink>
+            
+             <NavLink>
             <span>
               Products
             </span>
@@ -103,10 +87,6 @@ function Navbar() {
 
         </div>
 
-
-
-
-
         {/* Search */}
 
         <div className={styles.searchWrapper}>
@@ -114,10 +94,6 @@ function Navbar() {
           <SearchBar />
 
         </div>
-
-
-
-
 
 
         {/* Actions */}
@@ -147,15 +123,9 @@ function Navbar() {
                   </span>
                 )
               }
-
-
             </div>
 
-
           </NavLink>
-
-
-
 
 
           {/* Cart */}
@@ -183,13 +153,7 @@ function Navbar() {
 
             </div>
 
-
           </NavLink>
-
-
-
-
-
 
           {/* Profile */}
 
@@ -201,19 +165,9 @@ function Navbar() {
             <FiUser />
 
           </NavLink>
-
-
-
         </div>
 
-
-
       </nav>
-
-
-
-
-
 
       {/* Secondary Shopping Navigation */}
 

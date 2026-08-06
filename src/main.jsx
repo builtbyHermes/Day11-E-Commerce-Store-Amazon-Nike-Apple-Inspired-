@@ -7,20 +7,22 @@ import App from "./App.jsx";
 
 import { CartProvider } from "./context/CartContext.jsx";
 import { WishlistProvider } from "./context/WishlistContext.jsx";
+import CartDrawer from "../features/cart/components/CartDrawer/CartDrawer";
+import { AuthProvider } from "./context/AuthContext";
 
 createRoot(document.getElementById("root")).render(
 
   <StrictMode>
 
-        <CartProvider>
-
-      <WishlistProvider>
-
-        <App />
-
-      </WishlistProvider>
-
-    </CartProvider>
+            <AuthProvider>
+      <CartProvider>
+        <WishlistProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </WishlistProvider>
+      </CartProvider>
+    </AuthProvider>
 
   </StrictMode>
 
