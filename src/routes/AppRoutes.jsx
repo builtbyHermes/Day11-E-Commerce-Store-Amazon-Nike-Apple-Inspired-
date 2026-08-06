@@ -6,41 +6,22 @@ import MainLayout from "../layouts/MainLayout";
 
 const Home = lazy(() => import("../features/home/pages/Home"));
 
-const Products = lazy(() =>
-  import("../features/products/pages/Products")
-);
+const Products = lazy(() =>import("../features/products/pages/Products"));
 
-const ProductDetails = lazy(() =>
-  import("../features/products/pages/ProductDetails/ProductDetails")
-);
+const ProductDetails = lazy(() =>import("../features/products/pages/ProductDetails/ProductDetails"));
+const Cart = lazy(() =>import("../features/cart/pages/Cart"));
 
-const Cart = lazy(() =>
-  import("../features/cart/pages/Cart")
-);
+const Wishlist = lazy(() => import("../features/wishlist/pages/Wishlist"));
 
-const Wishlist = lazy(() =>
-  import("../features/wishlist/pages/Wishlist")
-);
+const Login = lazy(() => import("../features/auth/pages/Login"));
 
-const Login = lazy(() =>
-  import("../features/auth/pages/Login")
-);
+const Profile = lazy(() =>import("../features/auth/pages/Profile"));
+const Checkout = lazy(() =>import("../features/checkout/pages/Checkout"));
+const OrderConfirmation = lazy(() =>import("../features/checkout/pages/OrderConfirmation"));
+const SearchResults = lazy(() =>import("../features/search/pages/SearchResults"));
 
-const Profile = lazy(() =>
-  import("../features/auth/pages/Profile")
-);
+const Login =Lazy(()=>import ( "../features/auth/pages/Login"))
 
-const Checkout = lazy(() =>
-  import("../features/checkout/pages/Checkout")
-);
-
-const OrderConfirmation = lazy(() =>
-  import("../features/checkout/pages/OrderConfirmation")
-);
-
-const SearchResults = lazy(() =>
-  import("../features/search/pages/SearchResults")
-);
 function AppRoutes() {
   return (
     <BrowserRouter>
@@ -96,7 +77,11 @@ function AppRoutes() {
             element={<OrderConfirmation />}
             />
           </Route>
-
+          
+          <Route 
+            path="/login"
+            element={<Login />}
+            />
           <Route
             path="/search"
             element={<SearchResults />}
